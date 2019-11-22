@@ -44,7 +44,8 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-
+  .then(response => Object.assign(response.data, firstUser))
+  .then(console.log(firstUser))
 }
 
 
@@ -75,7 +76,7 @@ function large() {
 }
 // CODE HERE...
 
-
+let boundToElephant = large.bind(elephant)
 
 // *************
 // * PROBLEM 3 *
@@ -89,6 +90,10 @@ function large() {
 
 // CODE HERE...
 
+function deathStar(capacity, crew){
+  let capacity1 = capacity.bind(crew);
+  return capacity1;
+}
 
 
 // *************
@@ -104,6 +109,12 @@ function large() {
 
 // CODE HERE...
 
+function accountingOffice(assets){
+  let good = assets
+  return function (liabilities){
+   return liabilities + good
+  }
+}
 
 
 // *************
@@ -129,7 +140,16 @@ function large() {
 
 // CODE HERE...
 
+function forgetter(name) {
+  let rememberName = name
+  return function rememberall(item){
+    let thingsToRemember = {}
+    let rememberedStuff = {name: rememberName, remember: [...item]}
+    Object.assign(rememberedStuff, thingsToRemember);
+    return thingsToRemember;
 
+  }
+}
 
 // *************
 // * PROBLEM 6 *
@@ -156,3 +176,12 @@ function large() {
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+
+function frodo(startingHungerValue, startingDangerValue){
+  let hunger = startingHungerValue;
+  let danger = startingDangerValue
+  let start = {
+    hunger: hunger,
+    danger: danger
+  };
+}
